@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+.register-section {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr;
+}
+.regForm {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(60deg, #a50c18, #000000e9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.regForm form {
+  background-color: rgb(16, 16, 16);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 450px;
+}
+.regForm form h1 {
+  color: whitesmoke;
+}
+
+.regForm form span {
+  color: whitesmoke;
+  font-size: 14px;
+}
+.regForm form .anchor {
+  color: blue;
+  font-weight: 600;
+  text-decoration: none;
+}
+.regBanner {
+  background-image: linear-gradient(to right, #a50c19d0, #00000030),
+    url("../public/login.jpg");
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.regForm .inp-handler {
+  width: 100%;
+  padding: 1rem;
+}
+
+.regForm .inp-handler label {
+  color: white;
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.regForm .inp-handler input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  outline-color: #a50c18;
+}
+.regForm .inp-handler button {
+  display: block;
+  padding: 0.3rem 0.5rem;
+  color: white;
+  background-color: #a50c18;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+nav {
+  background-color: black;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  color: red;
+  font-size: 20px;
+  font-weight: 600;
+}
+.dashboard-container {
+  height: 100vh;
+  width: 100%;
+  background-color: red;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}

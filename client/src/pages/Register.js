@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 const Register = () => {
   useEffect(() => {
     document.title = "Register";
   }, []);
-  const myform = useRef(null);
 
   const [person, setPerson] = useState({
     fullname: "",
@@ -20,11 +20,22 @@ const Register = () => {
     });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const endPoint = "http://localhost:5000/api/v1/register";
+      const { data } = await axios.post(endPoint, { ...person });
+      setPerson({ username: "", fullname: "", password: "" });
+      console.log(data.msg);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <main>
       <section className="register-section">
         <div className="regForm">
-          <form action="" ref={myform}>
+          <form action="" onSubmit={handleSubmit}>
             <h1>Register</h1>
             <div className="inp-handler">
               <label htmlFor="fname">Fullname:</label>

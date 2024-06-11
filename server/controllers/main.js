@@ -18,7 +18,13 @@ const register = async (req, res) => {
 
     // Add user data to db
     const user = await User.create({ fullname, username, password });
-    res.status(200).json({ stat: true, msg: "success", user });
+    res
+      .status(200)
+      .json({
+        stat: true,
+        msg: `${username}, you've been registered successfully`,
+        user,
+      });
   } catch (error) {
     console.log(error);
   }

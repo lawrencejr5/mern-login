@@ -1,15 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const Header = () => {
+const Header = (props) => {
   return (
     <nav>
       <div className="logo">YanHub</div>
-      <Link
+      {
+        props.admin && <Link
         style={{ color: "white", fontWeight: "600", textDecoration: "none" }}
         to="/"
       >
         Create Task &rarr;
       </Link>
+      }
+      
+  
     </nav>
   );
 };

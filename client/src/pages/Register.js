@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "Register";
   }, []);
@@ -27,6 +28,9 @@ const Register = () => {
       const { data } = await axios.post(endPoint, { ...person });
       setPerson({ username: "", fullname: "", password: "" });
       console.log(data.msg);
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
     } catch (err) {
       console.log(err);
     }

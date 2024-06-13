@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
 const Login = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "Login";
   }, []);
-  const myform = useRef(null);
 
   const [person, setPerson] = useState({
     username: "",
@@ -18,12 +20,31 @@ const Login = () => {
       return { ...prev, [name]: value };
     });
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const endpoint = "http://localhost:5000/api/v1/login";
+    try {
+      const { data } = await axios.post(endpoint, { ...person });
+      setPerson({ username: "", fullname: "", password: "" });
+      const token = data.token;
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("username", data.username);
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
+      console.log(data.msg);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <main>
       <section className="register-section">
         <div className="regForm">
-          <form action="" ref={myform}>
+          <form action="" onSubmit={handleSubmit}>
             <h1>Login</h1>
             <div className="inp-handler">
               <label htmlFor="uname">Username:</label>
@@ -50,7 +71,9 @@ const Login = () => {
               />
             </div>
             <div className="inp-handler">
-              <button type="submit">Login</button>
+              <button type="submit" onClick={clickBtn}>
+                Login
+              </button>
             </div>
             <span>
               Don't have an account?{" "}
@@ -66,4 +89,10 @@ const Login = () => {
   );
 };
 
+const clickBtn = (e) => {
+  e.target.textContent = "Signing in...";
+  setTimeout(() => {
+    e.target.textContent = "Login";
+  }, 2000);
+};
 export default Login;

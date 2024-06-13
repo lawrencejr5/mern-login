@@ -6,7 +6,7 @@ const cors = require("cors");
 
 const ConnectDb = require("./db/conn");
 const notFound = require("./middleware/not-found");
-const router = require("./routes/main");
+const router = require("./routes/routes");
 
 app.use(express.json());
 app.use(cors());

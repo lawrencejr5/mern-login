@@ -40,7 +40,7 @@ const Dashboard = () => {
             }}
             to="/login"
           >
-            Login &rarr;
+            Logout &rarr;
           </Link>
         </h1>
       </div>

@@ -30,7 +30,6 @@ const Login = () => {
       const token = data.token;
 
       localStorage.setItem("token", token);
-      localStorage.setItem("username", data.username);
       setTimeout(() => {
         navigate("/");
       }, 1000);

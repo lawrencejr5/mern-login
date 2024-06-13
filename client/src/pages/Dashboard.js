@@ -5,6 +5,7 @@ import axios from "axios";
 import Header from "../components/Header";
 const Dashboard = () => {
   const [username, setUsername] = useState("");
+  const [admin, setAdmin] = useState(false);
   useEffect(() => {
     document.title = "Mern - Dashboard";
 
@@ -17,8 +18,8 @@ const Dashboard = () => {
             Authorization: `Bearer ${lsToken}`,
           },
         });
-        console.log(data.msg);
         setUsername(data.username);
+        setAdmin(data.isAdmin);
       } catch (err) {
         console.log(err);
       }
@@ -27,7 +28,7 @@ const Dashboard = () => {
   }, []);
   return (
     <main className="dashboard-container">
-      <Header />
+      <Header admin={admin}/>
       <div className="center">
         <h1>
           Welcome {username}
